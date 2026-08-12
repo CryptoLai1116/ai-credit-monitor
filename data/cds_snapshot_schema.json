@@ -1,0 +1,19 @@
+{
+  "description": "Append only verified CDS snapshots. Do not fabricate missing daily values.",
+  "fields": [
+    "company",
+    "tenor",
+    "bp",
+    "quote_date",
+    "source",
+    "source_published_date",
+    "source_url_or_citation",
+    "notes"
+  ],
+  "rules": [
+    "Record only if a reliable source states a concrete CDS value.",
+    "Do not use article publication date as quote_date unless the source explicitly says the quote is from that date.",
+    "Deduplicate syndications quoting the same underlying Reuters/LSEG or other source.",
+    "If no new value exists, keep the prior snapshot and mark it stale."
+  ]
+}
