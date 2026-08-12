@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12 11:17 TST（自動更新）",
+  "updatedAt": "2026-08-12 11:48 TST（自動更新）",
   "headline": "信用分化仍在，但融資管道未關閉",
   "headlineNote": "Broad IG credit 保持穩定；AI issuer 信用風險需透過可驗證 CDS 快照與新債市場條件持續累積觀察。",
   "traffic": "黃燈",
@@ -179,17 +179,17 @@
   "relativeTable": [
     [
       "ICE US Corporate OAS",
-      "穩定/偏窄",
-      "—",
-      "近期低位",
+      "78bp (8/10)",
+      "5日 +0bp（穩定）",
+      "FRED 2026-08-10",
       "市場基準",
       "未見 broad IG 信用壓力"
     ],
     [
       "ICE BBB OAS",
-      "穩定",
-      "—",
-      "近期低位",
+      "97bp (8/10)",
+      "5日 +0bp（穩定）",
+      "FRED 2026-08-10",
       "同評級基準",
       "未見 BBB 全面惡化"
     ],
