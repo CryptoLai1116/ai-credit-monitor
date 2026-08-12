@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI 信貸環境每日監控儀表板" />
+  <title>AI Credit Monitor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">AC</div>
+        <div>
+          <strong>AI Credit Monitor</strong>
+          <small>SuDo Research Lab</small>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-page="overview">總覽</button>
+        <button class="nav-item" data-page="companies">公司信用</button>
+        <button class="nav-item" data-page="relative">Relative Stress</button>
+        <button class="nav-item" data-page="cds">CDS Snapshots</button>
+        <button class="nav-item" data-page="regime">Credit Regime</button>
+        <button class="nav-item" data-page="divergence">Equity vs Credit</button>
+        <button class="nav-item" data-page="funding">Funding Transmission</button>
+        <button class="nav-item" data-page="issuance">新債市場</button>
+        <button class="nav-item" data-page="news">每日訊息</button>
+        <button class="nav-item" data-page="methodology">方法論</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="mini-dot yellow"></span>
+        <div>
+          <small>目前狀態</small>
+          <strong id="side-status">信用分化</strong>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">AI CREDIT CONDITIONS DASHBOARD</p>
+          <h1 id="page-title">總覽</h1>
+        </div>
+        <div class="top-actions">
+          <div class="update-box">
+            <small>最後更新</small>
+            <strong id="last-update">2026-08-05 09:00 TST</strong>
+          </div>
+          <button id="refresh-btn" class="primary-btn">重新整理</button>
+        </div>
+      </header>
+
+      <section id="overview" class="page active">
+        <div class="hero-grid">
+          <article class="hero-card">
+            <div class="hero-card-top">
+              <div>
+                <p class="eyebrow">TODAY'S CALL</p>
+                <h2 id="headline">信用分化、尚未全面融資受限</h2>
+              </div>
+              <span id="traffic-light" class="traffic yellow">黃燈</span>
+            </div>
+            <p id="headline-note" class="lead">
+              整體公司債 OAS 仍在收窄，但 Oracle 與部分 AI 相關信用工具走弱，顯示壓力偏向產業與公司個別重定價。
+            </p>
+          </article>
+
+          <article class="score-card">
+            <small>AI Credit Risk Score</small>
+            <div class="score-line">
+              <strong id="risk-score">61</strong><span>/100</span>
+            </div>
+            <div class="meter"><span id="risk-meter" style="width:61%"></span></div>
+            <p>分數越高，代表信用市場越接近實際限制 AI capex。</p>
+          </article>
+        </div>
+
+        <div class="grid four" id="kpi-grid"></div>
+
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">CDS SNAPSHOT TRACKER</p>
+              <h3>最新可驗證 CDS 快照</h3>
+            </div>
+            <button class="secondary-btn" data-jump="cds">查看全部</button>
+          </div>
+          <div id="cds-overview-preview" class="snapshot-grid"></div>
+        </div>
+
+        <div class="grid two">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">RELATIVE CREDIT STRESS</p>
+                <h3>市場 vs. AI 產業 vs. 公司個別</h3>
+              </div>
+            </div>
+            <div id="relative-bars" class="bar-stack"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">FUNDING TRANSMISSION</p>
+                <h3>壓力有沒有傳到實體建設？</h3>
+              </div>
+            </div>
+            <div id="transmission-bars" class="bar-stack"></div>
+          </article>
+        </div>
+
+
+        <div class="grid two">
+          <article class="panel">
+            <div class="panel-head">
+              <div><p class="eyebrow">CREDIT REGIME</p><h3>目前市場屬於哪一種狀態</h3></div>
+              <span id="regime-badge" class="badge yellow">Regime C</span>
+            </div>
+            <div id="regime-summary" class="regime-summary"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <div><p class="eyebrow">EQUITY vs CREDIT</p><h3>股價與信用市場是否背離</h3></div>
+            </div>
+            <div id="divergence-preview" class="signal-list"></div>
+          </article>
+        </div>
+
+        <div class="grid two">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">SIGNAL MATRIX</p>
+                <h3>目前最重要的訊號</h3>
+              </div>
+            </div>
+            <div id="signal-list" class="signal-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">WHAT WOULD CHANGE THE CALL?</p>
+                <h3>升級成紅燈需要看到什麼</h3>
+              </div>
+            </div>
+            <ol id="red-trigger-list" class="ordered-list"></ol>
+          </article>
+        </div>
+      </section>
+
+      <section id="companies" class="page">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">COMPANY HEATMAP</p>
+              <h3>公司信用壓力分層</h3>
+            </div>
+            <div class="legend">
+              <span><i class="legend-dot green"></i>低</span>
+              <span><i class="legend-dot yellow"></i>中</span>
+              <span><i class="legend-dot red"></i>高</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>公司</th><th>信用層級</th><th>主要融資來源</th><th>壓力</th><th>評級變化</th><th>目前解讀</th>
+                </tr>
+              </thead>
+              <tbody id="company-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="relative" class="page">
+        <div class="grid three">
+          <article class="panel"><small>Macro Credit</small><h2 id="macro-score">18%</h2><p>整體信用市場對本輪壓力的解釋權重。</p></article>
+          <article class="panel"><small>AI Sector</small><h2 id="sector-score">52%</h2><p>AI hyperscaler 與資料中心供給造成的重定價。</p></article>
+          <article class="panel"><small>Company Specific</small><h2 id="company-score">30%</h2><p>Oracle、CoreWeave 等個別公司因素。</p></article>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">RELATIVE STRESS TABLE</p><h3>相對信用壓力判讀</h3></div></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指標</th><th>當日</th><th>5 日</th><th>20 日</th><th>相對基準</th><th>解讀</th></tr></thead>
+              <tbody id="relative-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section id="cds" class="page">
+        <div class="grid three">
+          <article class="panel">
+            <small>CDS 方法</small>
+            <h2>可驗證快照</h2>
+            <p>不假設每日都有報價。每次找到可信來源的具體 CDS 數值，就記錄數值、報價日期、來源與發布日期。</p>
+          </article>
+          <article class="panel">
+            <small>比較方式</small>
+            <h2>Latest vs Previous</h2>
+            <p>只比較兩筆可驗證快照；若沒有新值，就顯示資料陳舊天數，不把舊值冒充今日報價。</p>
+          </article>
+          <article class="panel">
+            <small>Relative Stress</small>
+            <h2>對照 OAS</h2>
+            <p>將同一快照期間的 CDS 變化，與 ICE US Corporate OAS / BBB OAS 同期變化比較。</p>
+          </article>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">VERIFIED CDS SNAPSHOTS</p>
+              <h3>最新可驗證 CDS vs 前次快照</h3>
+            </div>
+            <span class="badge yellow">非即時行情</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>公司</th>
+                  <th>Tenor</th>
+                  <th>最新值</th>
+                  <th>報價日期</th>
+                  <th>前次值</th>
+                  <th>前次日期</th>
+                  <th>Δ bp</th>
+                  <th>間隔</th>
+                  <th>新鮮度</th>
+                  <th>來源</th>
+                </tr>
+              </thead>
+              <tbody id="cds-snapshot-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="panel">
+            <div class="panel-head">
+              <div><p class="eyebrow">SNAPSHOT HISTORY</p><h3>最近可驗證快照</h3></div>
+            </div>
+            <div id="cds-history-list" class="signal-list"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <div><p class="eyebrow">DATA QUALITY</p><h3>資料規則</h3></div>
+            </div>
+            <ul class="check-list">
+              <li>文章發布日期不得直接當作 CDS 報價日期。</li>
+              <li>重複轉載同一 Reuters/LSEG 數據只算一筆。</li>
+              <li>沒有具體 bp 數值就不記錄。</li>
+              <li>來源優先順序：Reuters/LSEG、S&P Global、原始交易／公司資料、其他可靠媒體。</li>
+              <li>沒有新數值時，顯示「無更新」與資料陳舊天數。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="regime" class="page">
+        <div class="grid four" id="regime-cards"></div>
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">REGIME HISTORY</p><h3>近期信用環境切換</h3></div></div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>期間</th><th>Macro OAS</th><th>AI CDS</th><th>股票</th><th>Regime</th><th>解讀</th></tr></thead>
+            <tbody id="regime-history-table"></tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <section id="divergence" class="page">
+        <div class="grid three">
+          <article class="panel"><small>股票上漲、CDS 上升</small><h2 id="eq-credit-warning">0 家</h2><p>股市樂觀但債市仍擔心槓桿與 FCF。</p></article>
+          <article class="panel"><small>股票下跌、CDS 上升</small><h2 id="joint-riskoff">0 家</h2><p>基本面或風險偏好同步轉弱。</p></article>
+          <article class="panel"><small>股票上漲、CDS 下降</small><h2 id="clean-riskon">0 家</h2><p>最乾淨的 risk-on 訊號。</p></article>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">DIVERGENCE MONITOR</p><h3>Equity vs Credit Divergence</h3></div></div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>公司</th><th>股價 5 日</th><th>CDS 5 日</th><th>相對 QQQ</th><th>狀態</th><th>解讀</th></tr></thead>
+            <tbody id="divergence-table"></tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <section id="funding" class="page">
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">TRANSMISSION CHAIN</p><h3>從 CDS 到 capex 延期，中間差了什麼</h3></div></div>
+          <div class="flow-chain" id="flow-chain"></div>
+        </div>
+        <div class="grid two">
+          <article class="panel">
+            <p class="eyebrow">ALTERNATIVE FUNDING</p>
+            <h3>替代資金是否仍能補位</h3>
+            <div id="alternative-grid" class="tag-grid"></div>
+          </article>
+          <article class="panel">
+            <p class="eyebrow">PROJECT EVIDENCE</p>
+            <h3>真正融資受限的硬證據</h3>
+            <ul id="project-evidence" class="check-list"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="issuance" class="page">
+        <div class="grid three">
+          <article class="panel"><small>平均訂單覆蓋</small><h2 id="book-cover">2.1x</h2><p>低於 1.5x 進入明顯警戒。</p></article>
+          <article class="panel"><small>平均 NIC</small><h2 id="nic">18bp</h2><p>高於 20–30bp 顯示市場要求額外補償。</p></article>
+          <article class="panel"><small>近期破發比例</small><h2 id="break-rate">24%</h2><p>新債發行後持續跑輸，代表吸收能力轉弱。</p></article>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">ISSUANCE MONITOR</p><h3>近期 AI／Hyperscaler 新債</h3></div></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>公司</th><th>日期</th><th>金額</th><th>年期</th><th>票息／利差</th><th>訂單倍數</th><th>NIC</th><th>狀態</th></tr></thead>
+              <tbody id="issuance-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="page">
+        <div class="grid two" id="news-grid"></div>
+      </section>
+
+      <section id="methodology" class="page">
+        <div class="grid two">
+          <article class="panel">
+            <p class="eyebrow">FRAMEWORK</p>
+            <h3>我們不是只看 CDS</h3>
+            <p class="body-copy">儀表板將信用價格分成三層：整體信用市場、AI 產業信用、公司個別信用。只有當資金價格惡化進一步傳導至新債發行、替代融資與實際專案時，才判定為「融資受限」。</p>
+          </article>
+          <article class="panel">
+            <p class="eyebrow">IMPORTANT LIMITATION</p>
+            <h3>CDS 與即時債券資料可能需要授權</h3>
+            <p class="body-copy">公開網站通常無法提供完整即時 CDS、TRACE、asset-swap spread 或新債訂單簿。本網站預留資料介面，但未接 Bloomberg、LSEG、ICE 或其他授權 API 時，數值應視為研究框架或人工更新欄位。</p>
+          </article>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">SCORING</p><h3>警報規則</h3></div></div>
+          <div class="grid three">
+            <div class="alert-card green-card"><h3>綠燈</h3><p>CDS 波動主要跟隨發債窗口；新債認購健康；替代融資通暢；專案正常。</p></div>
+            <div class="alert-card yellow-card"><h3>黃燈</h3><p>多家公司 CDS 同步擴大；NIC 上升；但發債與專案仍可完成。</p></div>
+            <div class="alert-card red-card"><h3>紅燈</h3><p>CDS 與 OAS 持續惡化；新債縮量或取消；替代資金失靈；capex／MW 實際延期。</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
