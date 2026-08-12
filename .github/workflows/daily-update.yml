@@ -1,0 +1,31 @@
+name: Daily data update
+
+on:
+  schedule:
+    # 21:30 UTC = 台北 05:30，美股收盤後
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update dashboard data
+        run: python3 scripts/update_data.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet data/dashboard.json; then
+            git add data/dashboard.json
+            git commit -m "chore: daily data update ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "No data changes today."
+          fi
