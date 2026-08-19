@@ -1,0 +1,24 @@
+{
+  "description": "Daily AI debt duration supply monitoring schema",
+  "fields": [
+    "date",
+    "ai_bond_issuance_usd_bn",
+    "issuance_20y_plus_share_pct",
+    "duration_weighted_supply",
+    "ai_30y_nic_bp",
+    "ai_30y_vs_peer_excess_spread_bp",
+    "ust_10y_pct",
+    "ust_30y_pct",
+    "real_10y_pct",
+    "real_30y_pct",
+    "notes",
+    "sources"
+  ],
+  "rules": [
+    "Use only verified issuance/pricing data.",
+    "Do not estimate NIC without defensible pre-deal fair value.",
+    "Compare AI long bonds with same-rating, similar-duration non-AI peers.",
+    "Separate Treasury duration shock from AI-specific credit spread widening.",
+    "Only classify Saturated when high-quality issuers show weak absorption across multiple markets."
+  ]
+}
