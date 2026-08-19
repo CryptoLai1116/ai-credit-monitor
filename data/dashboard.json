@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19 10:09 TST",
+  "updatedAt": "2026-08-19 10:44 TST（自動更新）",
   "headline": "Broad credit 尚穩，AI long-duration funding cost 成為新焦點",
   "headlineNote": "除了 CDS / OAS，新增 AI Debt Duration Supply：發債額、20Y+ 佔比、duration-weighted issuance、長債 NIC，以及 10Y/30Y nominal / real yields。",
   "traffic": "黃燈",
@@ -179,17 +179,17 @@
   "relativeTable": [
     [
       "ICE US Corporate OAS",
-      "穩定/偏窄",
-      "—",
-      "近期低位",
+      "81bp (8/17)",
+      "5日 +3bp（走擴）",
+      "FRED 2026-08-17",
       "市場基準",
       "未見 broad IG 信用壓力"
     ],
     [
       "ICE BBB OAS",
-      "穩定",
-      "—",
-      "近期低位",
+      "99bp (8/17)",
+      "5日 +2bp（穩定）",
+      "FRED 2026-08-17",
       "同評級基準",
       "未見 BBB 全面惡化"
     ],
@@ -426,16 +426,16 @@
   "divergence": [
     {
       "company": "Oracle",
-      "equity5d": "+4.2%",
+      "equity5d": "-1.8%",
       "cds5d": "+12bp",
-      "relativeQQQ": "+1.1%",
-      "state": "warning",
-      "label": "股漲、CDS 升",
+      "relativeQQQ": "-1.7%",
+      "state": "riskoff",
+      "label": "股跌、CDS 升",
       "interpretation": "債市仍擔心槓桿與未來發債"
     },
     {
       "company": "Google",
-      "equity5d": "+3.1%",
+      "equity5d": "+0.1%",
       "cds5d": "+7bp",
       "relativeQQQ": "+0.2%",
       "state": "warning",
@@ -444,18 +444,18 @@
     },
     {
       "company": "Amazon",
-      "equity5d": "-1.8%",
+      "equity5d": "-4.7%",
       "cds5d": "+5bp",
-      "relativeQQQ": "-4.7%",
+      "relativeQQQ": "-4.6%",
       "state": "riskoff",
       "label": "股跌、CDS 升",
       "interpretation": "股債同步轉弱，偏向 FCF 與供給壓力"
     },
     {
       "company": "Meta",
-      "equity5d": "-0.9%",
+      "equity5d": "-9.3%",
       "cds5d": "+3bp",
-      "relativeQQQ": "-3.8%",
+      "relativeQQQ": "-9.1%",
       "state": "riskoff",
       "label": "股跌、CDS 升",
       "interpretation": "風險偏好與 AI ROIC 疑慮並存"
