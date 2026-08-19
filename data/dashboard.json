@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-19 05:44 TST（自動更新）",
-  "headline": "信用分化仍在，但融資管道未關閉",
-  "headlineNote": "Broad IG credit 保持穩定；AI issuer 信用風險需透過可驗證 CDS 快照與新債市場條件持續累積觀察。",
+  "updatedAt": "2026-08-19 10:09 TST",
+  "headline": "Broad credit 尚穩，AI long-duration funding cost 成為新焦點",
+  "headlineNote": "除了 CDS / OAS，新增 AI Debt Duration Supply：發債額、20Y+ 佔比、duration-weighted issuance、長債 NIC，以及 10Y/30Y nominal / real yields。",
   "traffic": "黃燈",
   "riskScore": 55,
   "kpis": [
@@ -179,17 +179,17 @@
   "relativeTable": [
     [
       "ICE US Corporate OAS",
-      "81bp (8/17)",
-      "5日 +3bp（走擴）",
-      "FRED 2026-08-17",
+      "穩定/偏窄",
+      "—",
+      "近期低位",
       "市場基準",
       "未見 broad IG 信用壓力"
     ],
     [
       "ICE BBB OAS",
-      "99bp (8/17)",
-      "5日 +2bp（穩定）",
-      "FRED 2026-08-17",
+      "穩定",
+      "—",
+      "近期低位",
       "同評級基準",
       "未見 BBB 全面惡化"
     ],
@@ -426,16 +426,16 @@
   "divergence": [
     {
       "company": "Oracle",
-      "equity5d": "-1.8%",
+      "equity5d": "+4.2%",
       "cds5d": "+12bp",
-      "relativeQQQ": "-1.7%",
-      "state": "riskoff",
-      "label": "股跌、CDS 升",
+      "relativeQQQ": "+1.1%",
+      "state": "warning",
+      "label": "股漲、CDS 升",
       "interpretation": "債市仍擔心槓桿與未來發債"
     },
     {
       "company": "Google",
-      "equity5d": "+0.1%",
+      "equity5d": "+3.1%",
       "cds5d": "+7bp",
       "relativeQQQ": "+0.2%",
       "state": "warning",
@@ -444,18 +444,18 @@
     },
     {
       "company": "Amazon",
-      "equity5d": "-4.7%",
+      "equity5d": "-1.8%",
       "cds5d": "+5bp",
-      "relativeQQQ": "-4.6%",
+      "relativeQQQ": "-4.7%",
       "state": "riskoff",
       "label": "股跌、CDS 升",
       "interpretation": "股債同步轉弱，偏向 FCF 與供給壓力"
     },
     {
       "company": "Meta",
-      "equity5d": "-9.3%",
+      "equity5d": "-0.9%",
       "cds5d": "+3bp",
-      "relativeQQQ": "-9.1%",
+      "relativeQQQ": "-3.8%",
       "state": "riskoff",
       "label": "股跌、CDS 升",
       "interpretation": "風險偏好與 AI ROIC 疑慮並存"
@@ -594,5 +594,129 @@
       "bp": 93,
       "source": "Reuters / LSEG"
     }
-  ]
+  ],
+  "durationSupply": {
+    "status": "Moderate",
+    "statusClass": "moderate",
+    "score": 58,
+    "weeklyIssuance": "每日更新",
+    "longShare": "每日更新",
+    "weightedSupply": "每日更新",
+    "monitor": [
+      {
+        "metric": "AI bond issuance",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "yellow",
+        "interpretation": "看市場需要吸收多少 AI / hyperscaler 新債。"
+      },
+      {
+        "metric": "20Y+ issuance share",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "yellow",
+        "interpretation": "長債佔比升高代表 duration absorption 壓力加大。"
+      },
+      {
+        "metric": "Duration-weighted supply",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "yellow",
+        "interpretation": "比單看發債金額更能反映長端市場負擔。"
+      },
+      {
+        "metric": "30Y AI bond NIC",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "yellow",
+        "interpretation": "NIC 持續升高代表新債需要更多補償。"
+      },
+      {
+        "metric": "30Y AI vs IG peer excess spread",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "yellow",
+        "interpretation": "區分 macro duration shock 與 AI-specific repricing。"
+      },
+      {
+        "metric": "10Y Treasury",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "yellow",
+        "interpretation": "All-in funding cost 的第一層。"
+      },
+      {
+        "metric": "30Y Treasury",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "orange",
+        "interpretation": "直接影響 20–40Y AI bonds / AIDC WACC。"
+      },
+      {
+        "metric": "10Y real yield",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "yellow",
+        "interpretation": "追蹤長週期投資 hurdle rate。"
+      },
+      {
+        "metric": "30Y real yield",
+        "today": "待更新",
+        "d5": "待更新",
+        "d20": "待更新",
+        "state": "orange",
+        "interpretation": "長週期 AI infrastructure 的核心 hurdle-rate 指標。"
+      }
+    ],
+    "issuanceExamples": [
+      {
+        "company": "Alphabet",
+        "date": "2026-08-06",
+        "amount": "US$25bn",
+        "tenor": "2–40Y 多檔",
+        "approxDuration": "依 tranche 分拆",
+        "durationSupply": "需依各 tranche 計算"
+      },
+      {
+        "company": "Amazon",
+        "date": "2026-07",
+        "amount": "US$25bn",
+        "tenor": "3–40Y 多檔",
+        "approxDuration": "依 tranche 分拆",
+        "durationSupply": "需依各 tranche 計算"
+      },
+      {
+        "company": "Meta",
+        "date": "2025-10",
+        "amount": "US$30bn",
+        "tenor": "5–40Y 多檔",
+        "approxDuration": "依 tranche 分拆",
+        "durationSupply": "需依各 tranche 計算"
+      },
+      {
+        "company": "Oracle",
+        "date": "2026-02",
+        "amount": "US$25bn",
+        "tenor": "3–40Y 多檔",
+        "approxDuration": "依 tranche 分拆",
+        "durationSupply": "需依各 tranche 計算"
+      }
+    ],
+    "redTriggers": [
+      "AA/AAA hyperscaler 的 20–40Y 新債也需要大幅 NIC 才能賣掉。",
+      "長債 orderbook / cover ratio 顯著惡化，而且發行後持續破發。",
+      "AI 30Y/40Y cash-bond spread 持續跑輸同評級、同 duration 的非 AI issuer。",
+      "美元、歐元、澳幣、英鎊等多個市場同時出現弱需求。",
+      "30Y Treasury / real yield 高位，同時 NIC、credit spread、project-finance spread 一起升高。",
+      "最終開始造成 capex guidance、MW 或 GPU 訂單延期／取消。"
+    ]
+  }
 }
