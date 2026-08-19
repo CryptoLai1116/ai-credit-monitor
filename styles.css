@@ -66,3 +66,5 @@ h1{font-size:42px;margin:4px 0 0;letter-spacing:-.035em}h2{margin:8px 0 10px;fon
 .secondary-btn{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:#0b1528;color:var(--text);cursor:pointer}
 @media(max-width:1100px){.snapshot-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.snapshot-grid{grid-template-columns:1fr}}
+
+.duration-status{font-weight:800}.duration-status.low{color:var(--green)}.duration-status.moderate{color:var(--yellow)}.duration-status.high{color:var(--orange)}.duration-status.saturated{color:var(--red)}
