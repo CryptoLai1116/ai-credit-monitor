@@ -79,3 +79,7 @@ CDS、即時公司債 OAS、TRACE、新債訂單簿與 NIC 通常需要 Bloomber
 - Root Directory: `ai_credit_full_site`（如果你整個 zip 解壓後上傳）
 
 網站目前仍以 `data/dashboard.json` 為前端資料來源；更新 JSON 後重新部署即可。
+
+
+## v4 — AI Debt Duration Supply
+新增 Duration Supply 頁面與首頁摘要：AI bond issuance、20Y+ share、duration-weighted supply、30Y AI bond NIC、AI vs peer excess spread、10Y/30Y Treasury、10Y/30Y real yield，以及 Saturation Test。
