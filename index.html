@@ -27,6 +27,7 @@
         <button class="nav-item" data-page="divergence">Equity vs Credit</button>
         <button class="nav-item" data-page="funding">Funding Transmission</button>
         <button class="nav-item" data-page="issuance">新債市場</button>
+        <button class="nav-item" data-page="duration">Duration Supply</button>
         <button class="nav-item" data-page="news">每日訊息</button>
         <button class="nav-item" data-page="methodology">方法論</button>
       </nav>
@@ -82,6 +83,15 @@
 
         <div class="grid four" id="kpi-grid"></div>
 
+
+
+        <div class="panel">
+          <div class="panel-head">
+            <div><p class="eyebrow">AI DEBT DURATION SUPPLY</p><h3>長端投資人是否開始吸收不動 AI duration？</h3></div>
+            <span id="duration-stress-badge" class="badge yellow">Moderate</span>
+          </div>
+          <div id="duration-overview-grid" class="snapshot-grid"></div>
+        </div>
 
         <div class="panel">
           <div class="panel-head">
@@ -329,6 +339,46 @@
               <thead><tr><th>公司</th><th>日期</th><th>金額</th><th>年期</th><th>票息／利差</th><th>訂單倍數</th><th>NIC</th><th>狀態</th></tr></thead>
               <tbody id="issuance-table"></tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="duration" class="page">
+        <div class="grid four">
+          <article class="panel"><small>當週 AI 發債額</small><h2 id="duration-weekly-issuance">—</h2><p>只計入可驗證的 hyperscaler / AI infrastructure 新發債。</p></article>
+          <article class="panel"><small>20Y+ 發行佔比</small><h2 id="duration-long-share">—</h2><p>長天期供給越高，duration absorption 壓力越大。</p></article>
+          <article class="panel"><small>Duration-weighted Supply</small><h2 id="duration-weighted-supply">—</h2><p>Σ(發行金額 × 近似 duration)。</p></article>
+          <article class="panel"><small>Duration Supply Stress</small><h2 id="duration-stress-score">—</h2><p>Low / Moderate / High / Saturated。</p></article>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">DURATION SUPPLY MONITOR</p><h3>每天固定追蹤的核心指標</h3></div></div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>指標</th><th>Today</th><th>5D</th><th>20D</th><th>狀態</th><th>解讀</th></tr></thead>
+            <tbody id="duration-monitor-table"></tbody>
+          </table></div>
+        </div>
+        <div class="grid two">
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">ISSUANCE × DURATION</p><h3>近期 AI 新債久期結構</h3></div></div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>公司</th><th>日期</th><th>金額</th><th>年期</th><th>近似 Duration</th><th>Duration Supply</th></tr></thead>
+              <tbody id="duration-issuance-table"></tbody>
+            </table></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">SATURATION TEST</p><h3>什麼情況才算長端真的飽和？</h3></div></div>
+            <ol id="duration-red-triggers" class="ordered-list"></ol>
+          </article>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><p class="eyebrow">INTERPRETATION</p><h3>All-in funding cost 不只看 OAS</h3></div></div>
+          <div class="flow-chain">
+            <div class="flow-step"><small>1</small><h3>Risk-free rate</h3><p>10Y / 30Y Treasury、real yield</p></div>
+            <div class="flow-step"><small>2</small><h3>Credit spread</h3><p>AI cash-bond spread / peer spread</p></div>
+            <div class="flow-step"><small>3</small><h3>NIC / fees</h3><p>新債 concession 與發行成本</p></div>
+            <div class="flow-step"><small>4</small><h3>WACC</h3><p>長端資本成本是否高於專案 IRR</p></div>
+            <div class="flow-step"><small>5</small><h3>Capex action</h3><p>MW / GPU / capex 是否真的延期</p></div>
           </div>
         </div>
       </section>
