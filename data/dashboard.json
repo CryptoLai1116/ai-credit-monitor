@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-19 07:24 TST（自動更新）",
+  "updatedAt": "2026-09-22 08:11 TST（自動更新）",
   "headline": "Broad credit 尚穩，AI long-duration funding cost 成為新焦點",
   "headlineNote": "除了 CDS / OAS，新增 AI Debt Duration Supply：發債額、20Y+ 佔比、duration-weighted issuance、長債 NIC，以及 10Y/30Y nominal / real yields。",
   "traffic": "黃燈",
@@ -179,17 +179,17 @@
   "relativeTable": [
     [
       "ICE US Corporate OAS",
-      "78bp (9/17)",
-      "5日 -2bp（穩定）",
-      "FRED 2026-09-17",
+      "77bp (9/18)",
+      "5日 -3bp（收窄）",
+      "FRED 2026-09-18",
       "市場基準",
       "未見 broad IG 信用壓力"
     ],
     [
       "ICE BBB OAS",
-      "95bp (9/17)",
+      "94bp (9/18)",
       "5日 -3bp（收窄）",
-      "FRED 2026-09-17",
+      "FRED 2026-09-18",
       "同評級基準",
       "未見 BBB 全面惡化"
     ],
